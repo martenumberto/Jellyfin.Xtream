@@ -21,28 +21,8 @@ namespace Jellyfin.Xtream.Client.Models;
 
 public class Season
 {
-    [JsonProperty("air_date", NullValueHandling = NullValueHandling.Ignore)]
-    private string? _airDate;
-
-    public DateTime AirDate
-    {
-        get
-        {
-            if (DateTime.TryParse(_airDate, out var parsedDate))
-            {
-                return parsedDate;
-            }
-
-            return DateTime.MinValue; // Default value if parsing fails
-        }
-
-        set
-        {
-#pragma warning disable CA1305
-            _airDate = value.ToString("yyyy-MM-dd");
-#pragma warning restore CA1305
-        }
-    }
+    [JsonProperty("air_date")]
+    public DateTime AirDate { get; set; }
 
     [JsonProperty("episode_count")]
     public int EpisodeCount { get; set; }
